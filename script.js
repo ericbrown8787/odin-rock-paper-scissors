@@ -1,85 +1,79 @@
-function game(){
-    //Computer play function
-    function computerPlay() {
-        let options=['rock','paper','scissors'];
-        return options[Math.floor(Math.random() * 3)];
-    }
+//Score Counters
+let playerScore = 0;
+let computerScore = 0;
 
-    //Function to initiate playing a round
-    function playRound(){
-        
-        let playerSelection = prompt('Please enter "rock", "paper" or "scissors"').toLowerCase();
-        
-        let computerSelection = computerPlay();
-        
-            //Player Selection is Rock
-        if (playerSelection === "rock") {
-            if (computerSelection === "rock") {
-                return alert("This round is a tie");
-                
-            } else if (computerSelection === "paper"){
-                computerScore++
-                return alert("Computer wins this round.");
-                
-            } else if (computerSelection === "scissors"){
-                playerScore++;
-                return alert("Player wins this round.");
-            }
+//Divs. These won't actually select the div for some reason
+const messageBox = document.getElementById("messageBox");
+const playerScoreCounter = document.getElementById("playerScore");
+const computerScoreCounter = document.getElementById("computerScore");
 
-            //Player Selection is paper
-        } else if (playerSelection === "paper"){
-            if (computerSelection === "rock") {
-                playerScore++;
-                return alert("Player wins this round.");
-
-            } else if (computerSelection === "paper"){
-                return alert("This round is a tie");
-
-            } else if (computerSelection === "scissors"){
-                computerScore++;
-                return alert("Computer wins this round.");
-            }
-
-            // Player Selection is Scissors
-        } else if (playerSelection === "scissors"){
-            if (computerSelection === "rock") {
-                computerScore++;
-                return alert("Computer wins this round.");
-
-            } else if (computerSelection === "paper"){
-                playerScore++;
-                return "Player wins this round.";
-
-            } else if (computerSelection === "scissors"){
-                return alert("This round is a tie");
-            }
-
-            //Player selection is invalid entry(not rock, paper or scissors)
-        } else {
-            alert("Invalid entry. Please enter Rock, Paper or Scissors.");
-            return playRound();
-        }
-    }
-
-    //Score Counters
-    let playerScore= 0;
-    let computerScore = 0;
-    
-    //Looping through five rounds
-    for (let i = 0; i < 5; i++){
-        playRound();
-        alert(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
-    }
-
-    // Determining the winner. 
-    if (playerScore > computerScore) {
-        alert("You win this time, human.");
-
-    } else if (playerScore < computerScore) {
-        alert("Computer wins. Try again, meatbag.");
-
-    } else if (playerScore = computerScore) {
-        alert("Our skills are evenly matched.");
-    }
-
+function updateScore() {
+  playerScoreCounter.innerHTML = `Player Score: ${playerScore}`;
+  computerScoreCounter.innerHTML = `Computer Score: ${computerScore}`;
 }
+
+//Initial score update so we start at zero.
+updateScore();
+
+//Computer play function
+function computerPlay() {
+  let options = ["rock", "paper", "scissors"];
+  return options[Math.floor(Math.random() * 3)];
+}
+
+//Function to initiate playing a round
+function playRound(playerSelection) {
+  let computerSelection = computerPlay();
+
+  //Player Selection is Rock
+  if (playerSelection === "rock") {
+    if (computerSelection === "rock") {
+      messageBox.innerHTML = "This round is a tie";
+    } else if (computerSelection === "paper") {
+      computerScore++;
+      messageBox.innerHTML = "Computer wins this round.";
+    } else if (computerSelection === "scissors") {
+      playerScore++;
+      messageBox.innerHTML = "Player wins this round.";
+    }
+
+    //Player Selection is paper
+  } else if (playerSelection === "paper") {
+    if (computerSelection === "rock") {
+      playerScore++;
+      messageBox.innerHTML = "Player wins this round.";
+    } else if (computerSelection === "paper") {
+      messageBox.innerHTML = "This round is a tie";
+    } else if (computerSelection === "scissors") {
+      computerScore++;
+      messageBox.innerHTML = "Computer wins this round.";
+    }
+
+    // Player Selection is Scissors
+  } else if (playerSelection === "scissors") {
+    if (computerSelection === "rock") {
+      computerScore++;
+      messageBox.innerHTML = "Computer wins this round.";
+    } else if (computerSelection === "paper") {
+      playerScore++;
+      return "Player wins this round.";
+    } else if (computerSelection === "scissors") {
+      messageBox.innerHTML = "This round is a tie";
+    }
+  }
+}
+
+document.getElementById("rock").addEventListener("click", () => {
+  playRound("rock");
+  updateScore();
+});
+
+document.getElementById("paper").addEventListener("click", () => {
+  playRound("paper");
+  updateScore();
+});
+
+document.getElementById("scissors").addEventListener("click", () => {
+  playRound("scissors");
+  updateScore();
+});
