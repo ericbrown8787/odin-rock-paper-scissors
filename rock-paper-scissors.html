@@ -8,15 +8,41 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <img src="anthro-laptop.svg" alt="your sleep paralysis demon" />
-    <div id="messageBox"></div>
-    <button id="rock">🪨</button>
-    <button id="paper">🧻</button>
-    <button id="scissors">✂</button>
+    <div id="game">
+      <div id="arena">
+        <!-- Player Sprite -->
+        <figure id="playerSprite" class="sprite">
+          <img
+            id="playerImage"
+            src="bored-lady.svg"
+            alt="Definitely a picture of you"
+          />
+          <div id="playerStats"></div>
+        </figure>
 
-    <div id="playerScore" class="score"></div>
+        <!-- Computer Sprite -->
+        <figure id="computerSprite">
+          <img
+            id="computerImage"
+            src="anthro-laptop.svg"
+            alt="your sleep paralysis demon"
+          />
 
-    <div id="computerScore"></div>
+          <div id="computerStats"></div>
+        </figure>
+      </div>
+      <!-- Message Box -->
+      <div id="messageBox"></div>
+
+      <!-- Player Command Menu -->
+      <div id="commandMenu">
+        <h3>Choose an action:</h3>
+        <button id="rock">🪨</button>
+        <button id="paper">🧻</button>
+        <button id="scissors">✂</button>
+      </div>
+    </div>
+    <button id="replayButton">Restart Game</button>
 
     <script src="script.js" defer></script>
   </body>

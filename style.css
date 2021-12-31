@@ -1,3 +1,62 @@
-button {
+body {
+  text-align: center;
+}
+
+#commandMenu button {
   font-size: 3rem;
+  padding: 5px;
+  line-height: 1;
+}
+
+#messageBox {
+  /* border: 3px solid black;
+  border-radius: 20px; */
+  padding: 0.3rem;
+  margin: auto;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#arena {
+  display: flex;
+  justify-content: center;
+}
+
+#computerImage {
+  height: 320px;
+  width: 320px;
+}
+
+#playerImage {
+  height: 320px;
+  width: 320px;
+}
+
+#commandMenu {
+  border: 3px solid black;
+  margin: auto;
+  padding: 1rem;
+  border-radius: 20px;
+}
+
+#playButton {
+  font-size: 1rem;
+}
+
+#replayButton {
+  margin: 1rem;
+}
+
+.hearts {
+  text-align: center;
+}
+
+.hearts span {
+  padding: 0 2px 0 2px;
+  transition: ;
 }
